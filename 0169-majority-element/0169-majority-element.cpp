@@ -1,19 +1,40 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
+        //Optimal solution using  Moore's Voting Algorithm
+        
+        
         int n = nums.size();
         
-        map<int, int> mpp;
-        for(int i = 0; i < n; i++){
-            mpp[nums[i]]++;
-        }
+        int cnt = 0;
+        int el;
         
-        for(auto it: mpp){
-            if(it.second > n/2){
-                return it.first;
+        for(int i = 0; i < n; i++){
+            if(cnt == 0){
+                cnt = 1;
+                el = nums[i];
+            }
+            
+            else if(nums[i] == el){
+                cnt ++;
+            }
+            
+            else{
+                cnt--;
             }
         }
         
+        int res = 0;
+        for(int i = 0; i < n ; i++){
+            if(nums[i] == el){
+                res ++;
+            }
+            
+            if(res > n/2)
+            return el;
+        }
+        
         return -1;
+        
     }
 };
