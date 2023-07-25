@@ -1,6 +1,8 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
+        
+        //Better solution
         int n = nums.size();
         
         int cnt0 = 0;
